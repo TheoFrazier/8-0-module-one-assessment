@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
+const movies = require("./movies");
 const exampleMovies = require("./movies");
 // Do not change the line above.
 
@@ -28,7 +29,24 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+
+function getAllMovieTitles(exampleMovies) {
+
+  let movieNameArr = []
+
+  if (!exampleMovies.length) {
+    return []
+  }
+
+  for (let i = 0; i < exampleMovies.length; i++) {
+    movieName = exampleMovies[i].title;
+    movieNameArr.push(movieName)
+  }
+  return movieNameArr
+
+
+}
+
 
 /**
  * getHighestMetascore()
@@ -41,7 +59,7 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(exampleMovies) { }
 
 /**
  * getAverageIMDBRating()
@@ -54,7 +72,38 @@ function getHighestMetascore() {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(exampleMovies) {
+
+
+  if (exampleMovies.length === 0) {
+    return 0
+  }
+
+  imdbRatingArr = []
+
+  for (let i = 0; i < exampleMovies.length; i++) {
+    currentMovie = exampleMovies[i].imdbRating
+    imdbRatingArr.push(currentMovie)
+    //Right now the numbers are appearing as strings. Use map to convert them to integers.
+    imdbRatingArr = imdbRatingArr.map(Number)
+    //now they are integers and can be added!!
+  }
+
+  //to get the average we first have to TOTAL the numbers in the imdb array and then divide by the indexes in imdb array
+
+  let ratingTotaler = 0;
+  let averagingArr = []
+  //imcrement along the array used to get the 
+  for (let i = 0; i < imdbRatingArr.length; i++) {
+    ratingTotaler += imdbRatingArr[i];
+    averagingArr.push(imdbRatingArr[i])
+  }
+
+  return ratingTotaler / averagingArr.length
+
+}
+
+console.log(getAverageIMDBRating(exampleMovies))
 
 /**
  * countByRating()
@@ -67,7 +116,8 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating() {
+}
 
 /**
  * findById()
@@ -83,7 +133,7 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(exampleMovies) { }
 
 /**
  * filterByGenre()
@@ -105,7 +155,23 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(exampleMovies, genre) {
+
+  let matchingMovies = []
+
+  for (let i = 0; i < exampleMovies.length; i++) {
+    movie = exampleMovies[i].genre
+    if (movieChecking === genre) {
+      matchingMovies.push(movieChecking)
+    }
+    return matchingMovies
+  }
+  return []
+}
+
+
+
+
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -129,7 +195,7 @@ function filterByGenre() {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear() { }
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -142,7 +208,7 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie() { }
 
 // Do not change anything below this line.
 module.exports = {
