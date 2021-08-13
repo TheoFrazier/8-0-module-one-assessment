@@ -43,9 +43,10 @@ function getAllMovieTitles(exampleMovies) {
     movieNameArr.push(movieName)
   }
   return movieNameArr
-
-
 }
+
+
+
 
 
 /**
@@ -59,7 +60,26 @@ function getAllMovieTitles(exampleMovies) {
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore(exampleMovies) { }
+function getHighestMetascore(exampleMovies) {
+  //meta score is 0
+  //We will be searching through an for index to return as nested
+  let highestMeta = movies[0];
+  //if no array inputed return zero
+  if (!exampleMovies) {
+    return 0;
+  }
+  //loop along movie array - movie grants us access to index
+  for (let movie of exampleMovies) {
+    //if the metascore of current movie is greater than heighest meta
+    if (movie.metaScore > highestMeta.metascore) {
+      //the meta becopmes heighest score
+      highestMeta = movie
+    }
+  }
+  return highestMeta.metaScore
+}
+
+console.log(getHighestMetascore(exampleMovies))
 
 /**
  * getAverageIMDBRating()
@@ -105,7 +125,7 @@ function getAverageIMDBRating(exampleMovies) {
 
 }
 
-console.log(getAverageIMDBRating(exampleMovies))
+
 
 /**
  * countByRating()
@@ -118,8 +138,20 @@ console.log(getAverageIMDBRating(exampleMovies))
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {
+function countByRating(exampleMovies) {
+  let movieRating = {}
+  let ratingCounter = 0
+
+  for (let i = 0; i < exampleMovies.length; i++) {
+    movieRating = exampleMovies[i].rated
+    if (movieRating === exampleMovies[i].rated) {
+      ratingCounter++
+    }
+  }
+  return ratingCounter
 }
+
+
 
 /**
  * findById()
@@ -145,19 +177,18 @@ function findById(exampleMovies, id) {
   for (let movie of exampleMovies) {
     movieChecking = movie.imdbID
 
-    if (movieChecking === id){
+    if (movieChecking === id) {
       movieReturned = movie
-    } 
-     return movieReturned
+    }
+  }
+
+  return movieReturned
 
 
 }
 
 
 
-
-
-console.log(findById(exampleMovies, "tt2380307"))
 
 /**
  * filterByGenre()
@@ -180,21 +211,25 @@ console.log(findById(exampleMovies, "tt2380307"))
  *  //> []
  */
 function filterByGenre(exampleMovies, genre) {
-
+//guard clauses
+  if (!exampleMovies) {
+    return []
+  }
+//create array to accomulate our mathcing movies
   let matchingMovies = []
-
-  for (let i = 0; i < exampleMovies.length; i++) {
-    movie = exampleMovies[i].genre
-    if (movieChecking === genre) {
-      matchingMovies.push(movieChecking)
+//loop along example movies
+  for (let movie of exampleMovies) {
+    //if the genre of the object inludes genre inputted
+    if (movie.genre.includes(genre)) {
+      //push into our new array
+      matchingMovies.push(movie)
     }
     return matchingMovies
   }
-  return []
+
 }
 
-
-
+console.log(filterByGenre(exampleMovies, 'comedy'))
 
 
 /**
