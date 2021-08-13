@@ -79,6 +79,8 @@ function getAverageIMDBRating(exampleMovies) {
     return 0
   }
 
+  
+
   imdbRatingArr = []
 
   for (let i = 0; i < exampleMovies.length; i++) {
@@ -134,7 +136,7 @@ function countByRating() {
     };
  */
 function findById(exampleMovies, id) { 
-  
+
 }
 
 /**
