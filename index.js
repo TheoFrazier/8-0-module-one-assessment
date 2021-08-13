@@ -79,7 +79,7 @@ function getAverageIMDBRating(exampleMovies) {
     return 0
   }
 
-  
+
 
   imdbRatingArr = []
 
@@ -135,9 +135,29 @@ function countByRating() {
       // Toy Story 4
     };
  */
-function findById(exampleMovies, id) { 
+function findById(exampleMovies, id) {
+  let movieReturned = {}
+
+  if (exampleMovies.length === 0) {
+    return null
+  }
+
+  for (let movie of exampleMovies) {
+    movieChecking = movie.imdbID
+
+    if (movieChecking === id){
+      movieReturned = movie
+    } 
+     return movieReturned
+
 
 }
+
+
+
+
+
+console.log(findById(exampleMovies, "tt2380307"))
 
 /**
  * filterByGenre()
