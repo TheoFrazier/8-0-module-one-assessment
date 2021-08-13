@@ -133,7 +133,9 @@ function countByRating() {
       // Toy Story 4
     };
  */
-function findById(exampleMovies) { }
+function findById(exampleMovies, id) { 
+  
+}
 
 /**
  * filterByGenre()
