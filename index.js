@@ -143,22 +143,40 @@ function getAverageIMDBRating(exampleMovies) {
  *  //> { G: 3, PG: 7 }
  */
 function countByRating(exampleMovies) {
-
-  if (exampleMovies === false) {
+//gaurd clause to see if abject is empty
+  if (!exampleMovies) {
     return {}
   }
-
-
+  //set object to get movie
   let movieRating = {}
+//I will make an arraty to grab the values
+  let movieRatingArr = []
 
-
-  for (let i = 0; i < exampleMovies.length; i++) {
-    movieRating = exampleMovies[i].rated
-    if (movieRating === exampleMovies[i].rated) {
-      ratingCounter++
-    }
+  for (let movie of exampleMovies) {
+    //push rated into the index
+    movieRatingArr.push(movie.rated)
+    //set the object to recieve the rating from the array
+movieRating[movieRatingArr[i].rated] = ''
   }
-  return ratingCounter
+  
+  //I need to check if the index equals the rating and increment if so. The way I am comfortable with is a if statment
+
+ 
+//loop along the length of the array of ratings I just created... and check if the index matches the rating
+  for (let i = 0; i < movieRatingArr.length; i++) {
+    //if the rating is "G"
+    if (movieRatingArr[i] === 'G') {
+      //We incremement the G in the object
+      movieRating["G"] += 1
+      //If 'PG' increment PG-13
+    } else if (movieRatingArr[i] === 'PG') {
+      movieRating["PG"] += 1
+      //if PG thirteen increment PG-13
+    } else if (movieRatingArr[i] === 'PG-13') {
+      movieRating["PG-13"] += 1
+  }
+}
+return movieRating
 }
 
 
