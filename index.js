@@ -71,7 +71,7 @@ function getHighestMetascore(exampleMovies) {
   //loop along movie array - movie grants us access to index
   for (let movie of exampleMovies) {
     //if the metascore of current movie is greater than heighest meta
-    
+
     if (movie.metascore > scoresOfMovie.metascore) {
       // 'metaScore' was here. Be conscious of syntax!!!!
       //the meta becomes heighest score
@@ -144,13 +144,13 @@ function getAverageIMDBRating(exampleMovies) {
  */
 function countByRating(exampleMovies) {
 
-if(exampleMovies === false) {
-  return {}
-}
+  if (exampleMovies === false) {
+    return {}
+  }
 
-  
-let movieRating = {}
- 
+
+  let movieRating = {}
+
 
   for (let i = 0; i < exampleMovies.length; i++) {
     movieRating = exampleMovies[i].rated
@@ -179,9 +179,9 @@ let movieRating = {}
  */
 function findById(exampleMovies, id) {
 
-//loop along the movie object
+  //loop along the movie object
   for (let movie of exampleMovies) {
- //no need to define what the id is - i'm just returning the movie!!   
+    //no need to define what the id is - i'm just returning the movie!!   
     if (movie.imdbID === id) {
       return movie
     }
@@ -214,22 +214,18 @@ function findById(exampleMovies, id) {
  *  //> []
  */
 function filterByGenre(exampleMovies, genre) {
-//guard clauses
-  if (!exampleMovies) {
-    return []
-  }
-//create array to accomulate our mathcing movies
+  //guard clauses
+  //create array to accomulate our mathcing movies
   let matchingMovies = []
-//loop along example movies
+  //loop along example movies
   for (let movie of exampleMovies) {
-    //if the genre of the object inludes genre inputted
-    if (movie.genre.includes(genre)) {
+    //if the genre of the object inludes genre inputted - test wants it to be case INSENSATIVE
+    if (movie.genre.toUpperCase().includes(genre.toUpperCase())) {
       //push into our new array
       matchingMovies.push(movie)
     }
-    return matchingMovies
   }
-
+  return matchingMovies
 }
 
 console.log(filterByGenre(exampleMovies, 'comedy'))

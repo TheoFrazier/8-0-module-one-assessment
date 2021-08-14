@@ -41,7 +41,7 @@ describe("getAllMovieTitles()", () => {
   });
 });
 
-describe.only("getHighestMetascore()", () => {
+describe("getHighestMetascore()", () => {
   test("should return highest Metascore of all movies as a number", () => {
     const actual = getHighestMetascore(movies);
     const expected = 96;
@@ -137,7 +137,7 @@ describe("findById()", () => {
   });
 });
 
-describe("filterByGenre()", () => {
+describe.only("filterByGenre()", () => {
   test("should return all movies that include the specified genre", () => {
     const genre = "Mystery";
     const actual = filterByGenre(movies, genre);
