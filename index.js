@@ -63,20 +63,24 @@ function getAllMovieTitles(exampleMovies) {
 function getHighestMetascore(exampleMovies) {
   //meta score is 0
   //We will be searching through an for index to return as nested
-  let highestMeta = movies[0];
+  let scoresOfMovie = exampleMovies[0];
   //if no array inputed return zero
-  if (!exampleMovies) {
+  if (!scoresOfMovie) {
     return 0;
   }
   //loop along movie array - movie grants us access to index
   for (let movie of exampleMovies) {
     //if the metascore of current movie is greater than heighest meta
-    if (movie.metaScore > highestMeta.metascore) {
-      //the meta becopmes heighest score
-      highestMeta = movie
+    
+    if (movie.metascore > scoresOfMovie.metascore) {
+      // 'metaScore' was here. Be conscious of syntax!!!!
+      //the meta becomes heighest score
+      scoresOfMovie = movie
     }
   }
-  return highestMeta.metaScore
+  // use number to return as a number vs a string https://www.w3schools.com/js/js_number_methods.asp
+  return Number(scoresOfMovie.metascore)
+  //'metaScore again!!! watch synax!!
 }
 
 console.log(getHighestMetascore(exampleMovies))
@@ -139,8 +143,14 @@ function getAverageIMDBRating(exampleMovies) {
  *  //> { G: 3, PG: 7 }
  */
 function countByRating(exampleMovies) {
-  let movieRating = {}
-  let ratingCounter = 0
+
+if(exampleMovies === false) {
+  return {}
+}
+
+  
+let movieRating = {}
+ 
 
   for (let i = 0; i < exampleMovies.length; i++) {
     movieRating = exampleMovies[i].rated
@@ -169,12 +179,14 @@ function countByRating(exampleMovies) {
  */
 function findById(exampleMovies, id) {
 
-
+//loop along the movie object
   for (let movie of exampleMovies) {
+ //no need to define what the id is - i'm just returning the movie!!   
     if (movie.imdbID === id) {
       return movie
     }
   }
+  //null for all other case
   return null
 }
 
