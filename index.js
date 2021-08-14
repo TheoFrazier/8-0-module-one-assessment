@@ -168,23 +168,14 @@ function countByRating(exampleMovies) {
     };
  */
 function findById(exampleMovies, id) {
-  let movieReturned = {}
 
-  if (exampleMovies.length === 0) {
-    return null
-  }
 
   for (let movie of exampleMovies) {
-    movieChecking = movie.imdbID
-
-    if (movieChecking === id) {
-      movieReturned = movie
+    if (movie.imdbID === id) {
+      return movie
     }
   }
-
-  return movieReturned
-
-
+  return null
 }
 
 
